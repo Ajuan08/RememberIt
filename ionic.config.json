@@ -1,0 +1,7 @@
+{
+  "name": "rememberIt",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
