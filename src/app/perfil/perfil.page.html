@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="profile-container">
+    <img [src]="profileImageUrl || 'assets/images/perfil.png'" alt="Perfil" class="profile-image">
+    <div class="profile-info" *ngIf="!isEditing">
+      <p class="profile-name">{{ nombre }}</p>
+      <p class="profile-email">{{ email }}</p>
+      <p class="profile-age">{{ edad }} años</p>
+      <p class="profile-gender">Género: {{ genero }}</p>
+      <ion-button expand="full" shape="round" fill="outline" color="secondary" (click)="toggleEdit()">Editar Perfil</ion-button>
+      <ion-button expand="full" shape="round" fill="outline" color="danger" (click)="logout()">Cerrar Sesión</ion-button>
+    </div>
+
+    <!-- Formulario de Edición -->
+    <div class="profile-info" *ngIf="isEditing">
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input [(ngModel)]="editNombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Edad</ion-label>
+        <ion-input type="number" [(ngModel)]="editEdad"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Género</ion-label>
+        <ion-input [(ngModel)]="editGenero"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Foto de Perfil</ion-label>
+        <input type="file" (change)="onFileSelected($event)" />
+      </ion-item>
+      <ion-button expand="full" shape="round" fill="outline" color="primary" (click)="saveProfile()">Guardar Cambios</ion-button>
+      <ion-button expand="full" shape="round" fill="outline" color="danger" (click)="toggleEdit()">Cancelar</ion-button>
+    </div>
+  </div>
+</ion-content>

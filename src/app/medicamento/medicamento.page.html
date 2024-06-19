@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Añadir Medicamento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Nombre del Medicamento</ion-label>
+          <ion-input type="text" [(ngModel)]="nombreMedicamento"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Fecha de Fin</ion-label>
+          <ion-datetime
+            presentation="date"
+            display-format="MM/DD/YYYY"
+            picker-format="MM/DD/YYYY"
+            min="{{ today }}"
+            [(ngModel)]="fechaFin"
+            value="{{ today }}">
+          </ion-datetime>
+        </ion-item>
+        <ion-item button (click)="openPicker()">
+          <ion-label>Dosis Diarias</ion-label>
+          <ion-note slot="end">{{ dosisDiarias }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Anotaciones</ion-label>
+          <ion-textarea [(ngModel)]="anotaciones"></ion-textarea>
+        </ion-item>
+        <ion-button expand="full" (click)="addMedicamento()">Añadir Medicamento</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

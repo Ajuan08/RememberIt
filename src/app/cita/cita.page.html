@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Añadir Cita</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Médico</ion-label>
+          <ion-select [(ngModel)]="selectedMedico">
+            <ion-select-option *ngFor="let medico of medicos" [value]="medico">
+              {{ medico.nombre }} <span class="especialidad">({{ medico.especialidad }})</span>
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Fecha y Hora</ion-label>
+          <ion-datetime
+            display-format="MM/DD/YYYY HH:mm"
+            picker-format="MM/DD/YYYY HH:mm"
+            min="{{ today }}"
+            [(ngModel)]="fechaHora"
+            value="{{ today }}">
+          </ion-datetime>
+        </ion-item>
+        <ion-button expand="full" (click)="addCita()">Añadir al Calendario</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
